@@ -2,6 +2,30 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
+@Client.on_message()
+def on_message(client: Client , message: Message):
+    if message.text == "shrek":
+        message.reply_photo("https://i.ytimg.com/vi/7Bzbckc1IUI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAocaVIIoden2ZUcot7y5sMKz2OdQ",
+                            caption="l love shrek")
+    else:
+        message.reply_text("your massage is not good",reply_markup= InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton(text="shrek", callback_data="shrek")]
+            ]
+        ))
+    #
+    # message.reply_photo("https://i.ytimg.com/vi/7Bzbckc1IUI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAocaVIIoden2ZUcot7y5sMKz2OdQ",
+    #                     caption="i love sherek")
+
+
+@Client.on_callback_query()
+def shrek(client: Client ,callback_query: CallbackQuery):
+    data = callback_query.data
+
+    if data == "shrek":
+        callback_query.message.reply_photo(
+            "https://i.ytimg.com/vi/7Bzbckc1IUI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAocaVIIoden2ZUcot7y5sMKz2OdQ",
+            caption="l love shrek")
 
 # @Client.on_message()
 # def on_message(client: Client, message: Message):
