@@ -15,7 +15,7 @@ def on_message(client: Client, message: Message):
 
 @Client.on_callback_query(filters.regex("amin hosseini222"))
 def amin_hosseini(client: Client, callback_query: CallbackQuery):
-    print(callback_query.data)
+    print(callback_query)
 
 
 # @Client.on_callback_query()
