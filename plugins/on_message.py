@@ -3,19 +3,19 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 
 
-@Client.on_message()
-def on_message(client: Client, message: Message):
-    message.reply_text("این برنامه فقط برای بوس کردن فرزانه درست شده است😉",
-                       reply_markup=InlineKeyboardMarkup(
-                           [
-                               [InlineKeyboardButton(text = "فرزانه دلش 10 تا بوس آب دار میخواد؟😍" , callback_data = "amin hosseini222") , InlineKeyboardButton(text = "نکنه دلت نمیخواد؟😱" , callback_data = "ds hosseini")],
-                           ]
-                       ))
-
-
-@Client.on_callback_query(filters.regex("amin hosseini222"))
-def amin_hosseini(client: Client, callback_query: CallbackQuery):
-    print(callback_query)
+# @Client.on_message()
+# def on_message(client: Client, message: Message):
+#     message.reply_text("این برنامه فقط برای بوس کردن فرزانه درست شده است😉",
+#                        reply_markup=InlineKeyboardMarkup(
+#                            [
+#                                [InlineKeyboardButton(text = "فرزانه دلش 10 تا بوس آب دار میخواد؟😍" , callback_data = "amin hosseini222") , InlineKeyboardButton(text = "نکنه دلت نمیخواد؟😱" , callback_data = "ds hosseini")],
+#                            ]
+#                        ))
+#
+#
+# @Client.on_callback_query(filters.regex("amin hosseini222"))
+# def amin_hosseini(client: Client, callback_query: CallbackQuery):
+#     print(callback_query)
 
 
 # @Client.on_callback_query()
