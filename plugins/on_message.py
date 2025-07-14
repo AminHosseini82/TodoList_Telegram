@@ -10,6 +10,6 @@ def on_message(client: Client, message: Message):
                        reply_markup=InlineKeyboardMarkup(
                            [
                                [InlineKeyboardButton(text = "amin" , callback_data = "amin hosseini") , InlineKeyboardButton(text = "da" , callback_data = "ds hosseini")],
-                               [InlineKeyboardButton(text = "fa" , callback_data = "aminss hosseini")],
+                               [InlineKeyboardButton(text = "how to add mirror butem in pyrogram" , url = "https://docs.pyrogram.org/topics/use-filters")],
                            ]
                        ))
