@@ -1,21 +1,43 @@
-import asyncio
-from pyrogram import Client, filters
+from pyrogram import Client
+from pyrogram.raw.types import message
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.enums import ChatAction
 
 
-# @Client.on_message()
-# def on_message(client: Client, message: Message):
-#     message.reply_text("این برنامه فقط برای بوس کردن فرزانه درست شده است😉",
-#                        reply_markup=InlineKeyboardMarkup(
-#                            [
-#                                [InlineKeyboardButton(text = "فرزانه دلش 10 تا بوس آب دار میخواد؟😍" , callback_data = "amin hosseini222") , InlineKeyboardButton(text = "نکنه دلت نمیخواد؟😱" , callback_data = "ds hosseini")],
-#                            ]
-#                        ))
-#
-#
-# @Client.on_callback_query(filters.regex("amin hosseini222"))
-# def amin_hosseini(client: Client, callback_query: CallbackQuery):
-#     print(callback_query)
+
+@Client.on_message()
+def on_message(client: Client, message: Message):
+    message.reply_text(f"this is your message {message.text}",
+                       reply_markup=InlineKeyboardMarkup(
+                           [
+                               [InlineKeyboardButton(text = "key1" , callback_data = "bottem 1") , InlineKeyboardButton(text = "key2" , callback_data = "bottem 2")],
+                           ]
+                       ))
+
+
+@Client.on_callback_query()
+def text_reply(client: Client, callback_query: CallbackQuery):
+    if callback_query.data == "bottem 1":
+        callback_query.message.reply_chat_action(action=ChatAction.TYPING)
+        callback_query.message.reply_text(
+        f"""
+        this is the text and from bottem 1
+        this is all your information {callback_query}
+        """)
+        callback_query.answer("🖕")
+    else:
+        callback_query.message.reply_chat_action(ChatAction.TYPING)
+        callback_query.message.reply_text(
+        f"""
+        this is the text and from bottem 2
+        this is the id of message{callback_query.message.id}
+        this is the user id {callback_query.message.from_user.id}
+        """)
+        client.delete_messages(chat_id=callback_query.message.chat.id, message_ids=callback_query.message.id)
+
+        callback_query.answer("🖕")
+
+
 
 
 # @Client.on_callback_query()
