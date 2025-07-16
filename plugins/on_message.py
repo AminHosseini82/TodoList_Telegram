@@ -8,6 +8,5 @@ from pyrogram.enums import ChatAction
 def on_message(client: Client, message: Message):
     message.reply_chat_action(action=ChatAction.TYPING)
     message.reply_text(f"your message: {message.text}")
-#     شسشسشس
 
 
