@@ -22,6 +22,7 @@ app = Client(
 # @app.on_message()
 async def job():
     await app.send_message("me", "Hi!")
+    await Message.reply_text("Hi amin!!")
 
 
 scheduler = AsyncIOScheduler()
