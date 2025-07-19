@@ -19,14 +19,18 @@ app = Client(
     plugins=plugins
 )
 
-@app.on_message()
+# @app.on_message()
 async def job():
     await app.send_message("me", "Hi!")
 
 
 scheduler = AsyncIOScheduler()
 scheduler.add_job(job, "interval", seconds=3)
-scheduler.start()
+
+# @app.on_connect()
+async def start_scheduler(_):
+    scheduler.start()
+    print("Scheduler started")
 
 print("ربات در حال اجرا است...")
 app.run()
