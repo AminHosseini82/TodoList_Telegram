@@ -11,7 +11,7 @@ async def start_handler(client: Client, message: Message):
 
 # this is test on message
 @Client.on_message(filters.regex("سلام"))
-async def amin_message(cilent, message: Message):
+async def amin_message(client, message: Message):
     await message.reply_text(f"this is the message.id: {message.id}")
     await message.reply_text(f"information about User: {message}")
 
