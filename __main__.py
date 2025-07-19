@@ -2,6 +2,8 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 import pyromod.listen
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
 
 plugins = dict(root="plugins")
 
@@ -16,6 +18,15 @@ app = Client(
     # bot_token=BOT_TOKEN,
     plugins=plugins
 )
+
+@app.on_message()
+async def job():
+    await app.send_message("me", "Hi!")
+
+
+scheduler = AsyncIOScheduler()
+scheduler.add_job(job, "interval", seconds=3)
+scheduler.start()
 
 print("ربات در حال اجرا است...")
 app.run()
