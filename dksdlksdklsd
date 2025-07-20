@@ -1,0 +1,40 @@
+[33mc0d3063[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mtest[m[33m, [m[1;31morigin/test[m[33m)[m filed in scheduler
+[33m67c534d[m async def start_scheduler(_):     scheduler.start()     print("Scheduler started")
+[33ma71f0dc[m @Client.on_message(filters.command('clean'))
+[33md701d02[m client just changeed
+[33mcb5ed5a[m next self bot
+[33m0b9c018[m before self bot
+[33mc25dd71[m all good
+[33m91bacf3[m BOT_TOKEN = os.environ.get("BOT_TOKEN", "7711350201:AAFxdi3bpLtaCteWFb0KtD93BcFLIXEkXb8")
+[33m458585e[m async def start_handler(client: Client, message: Message):
+[33m5716ff4[m     answer = await client.ask(message.from_user.id, "Send me your name:")
+[33mcf17f0d[m fix and clean code
+[33mebc3911[m delete Comment
+[33m0ab5f66[m fix bug in on_message.py
+[33m766b2d4[m add docx file for test
+[33ma9e8f48[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m     client.send_message(chat_id=7887229801, text=client.copy_message())
+[33mf8fcd71[m     client.send_message(chat_id=7887229801, text=client.copy_message())
+[33m69e89a6[m     client.send_message(chat_id=7887229801, text=client.get_chat_history(chat_id=7887229801))
+[33m50e843d[m delete gitignore
+[33mc1daca9[m delete gitignore
+[33m0f2233e[m add gitignore
+[33mbe471e7[m     client.send_message(chat_id=7887229801, text=message.text)
+[33m91790bc[m the last commit
+[33m0696887[m see client in this file
+[33maff1046[m client.send_message(chat_id=7887229801, text=message.text)
+[33md575401[m noting
+[33mcb5365a[m new learn
+[33me91830b[m Merge remote-tracking branch 'origin/test' into test
+[33mbca99a3[m callback_query.message.reply_chat_action
+[33m08f0cc1[m callback_query.message.reply_chat_action
+[33maabf8a9[m shrek
+[33m96d190e[m comment for f if wants.
+[33m17405e6[m callback_data = "amin hosseini222")
+[33m421b375[m add print
+[33m2c4a457[m @Client.on_callback_query(filters.regex("amin hosseini222"))
+[33m422e896[m  url = "https://docs.pyrogram.org/topics/use-filters")
+[33m53434f4[m reply_markup=InlineKeyboardMarkup
+[33mf4a3c9a[m ReplyKeyboardMarkup
+[33m9e0f788[m tesr reply_text
+[33mc3beb0d[m reply_markup=ReplyKeyboardMarkup
+[33m75f3662[m first commit

@@ -28,7 +28,7 @@ async def job():
 scheduler = AsyncIOScheduler()
 scheduler.add_job(job, "interval", seconds=3)
 
-# @app.on_connect()
+# @app.connect()
 async def start_scheduler(_):
     scheduler.start()
     print("Scheduler started")
