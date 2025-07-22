@@ -1,21 +1,33 @@
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import create_engine, Column, Integer, String
+import bcrypt
+from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-engine = create_engine('sqlite:///test.db')
-base = declarative_base()
+engine = create_engine('sqlite:///test.db', echo=True)
+Base = declarative_base()
 
 
-class User(base):
-    __tablename__ = 'user'
+class User(Base):
+    __tablename__ = "user"
 
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, unique=True, nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer)
     first_name = Column(String(100))
     last_name = Column(String(100))
+    # strong password
+    password = Column(String(120))
+
+    def set_password(self, password):
+        salt = bcrypt.gensalt()
+        self.password = bcrypt.hashpw(password.encode(), salt).decode()
+
+    def check_password(self, password):
+        return bcrypt.checkpw(password.encode(), self.password.encode())
 
     def __repr__(self):
-        return f"<User(user_id={self.user_id}, first_name='{self.first_name}')>"
+        return f"user_id {self.user_id},first name {self.first_name},last name {self.last_name}"
 
-base.metadata.create_all(engine)
+
+Base.metadata.create_all(engine)
+# 5. ایجاد نشست (Session) برای کار با دیتابیس
 Session = sessionmaker(bind=engine)
 session = Session()
