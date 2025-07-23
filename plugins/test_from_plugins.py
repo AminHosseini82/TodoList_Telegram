@@ -7,10 +7,6 @@ from plugins.login_check import login
 async def todo_list_test(client: Client, message: Message):  # Show all user todolist
     # check login
     await login(client, message)
-    user_id = message.from_user.id
 
-    user = session.query(User).filter_by(user_id = user_id).first()
-    print(f"this is {user.todos()}")
-    await message.reply_text("this this todo list")
-
-
+    user = session.query(User).filter_by(user_id = message.from_user.id).first()
+    todos = user.todos
