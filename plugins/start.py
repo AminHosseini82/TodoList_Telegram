@@ -18,8 +18,10 @@ async def start_handler(client: Client, message: Message):
     if not existing_user:  # user is new
         new_user = User(user_id=user_id, firstname=user_first_name, lastname=user_last_name)
         new_user.set_password("123456")
+        # save in database
         session.add(new_user)
         session.commit()
+        # Show successful login message.
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("کاربر جدید ثبت شد!")
 
