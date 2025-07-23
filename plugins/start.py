@@ -17,6 +17,8 @@ async def start_handler(client: Client, message: Message):
     # checking user is new or old one.
     if not existing_user:  # user is new
         new_user = User(user_id=user_id, firstname=user_first_name, lastname=user_last_name)
+        # set a simple password for now
+        # Todo: get user password from him.
         new_user.set_password("123456")
         # save in database
         session.add(new_user)
