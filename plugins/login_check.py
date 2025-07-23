@@ -22,3 +22,5 @@ async def login(client: Client, message: Message):
         # Show successful login message.
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("کاربر جدید ثبت شد!")
+    else:
+        return
