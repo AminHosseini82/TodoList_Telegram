@@ -28,12 +28,12 @@ async def start_handler(client: Client, message: Message):
         # Show successful login message.
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("کاربر جدید ثبت شد!")
-
+    # show wellcome message.
     else:
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("خوش اومدی!")
 
-    # Show a button
+    # Show a button to see all work
     await message.reply_chat_action(enums.ChatAction.TYPING)
     await message.reply_text("میخوای چی کار بکنی؟", reply_markup=ReplyKeyboardMarkup(
         [
