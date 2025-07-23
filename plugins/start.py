@@ -1,3 +1,5 @@
+from gc import callbacks
+
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ReplyKeyboardMarkup
 from pyrogram import Client, filters, enums
 from database.models import User, session
@@ -33,28 +35,10 @@ async def start_handler(client: Client, message: Message):
 
     # Show a button
     await message.reply_chat_action(enums.ChatAction.TYPING)
-    await message.reply_text("میخوای چی کار بکنی؟", reply_markup=InlineKeyboardMarkup(
+    await message.reply_text("میخوای چی کار بکنی؟", reply_markup=ReplyKeyboardMarkup(
         [
-            [  # First row
-                InlineKeyboardButton(  # Generates a callback query when pressed
-                    "Button",
-                    callback_data="data"
-                ),
-                InlineKeyboardButton(  # Opens a web URL
-                    "URL",
-                    url="https://docs.pyrogram.org"
-                ),
-            ],
-            [  # Second row
-                InlineKeyboardButton(  # Opens the inline interface
-                    "Choose chat",
-                    switch_inline_query="pyrogram"
-                ),
-                InlineKeyboardButton(  # Opens the inline interface in the current chat
-                    "Inline here",
-                    switch_inline_query_current_chat="pyrogram"
-                )
-            ]
+            ["نمایش لیست کار ها"],
+            ["اضافه کردن کار جدید"],
+            ["ویرایش کار"],
         ]
-
     ))
