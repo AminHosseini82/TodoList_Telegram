@@ -8,7 +8,6 @@ from database.models import User, session
 @Client.on_message(filters.command(["start"]))
 async def start_handler(client: Client, message: Message):
     await message.reply_chat_action(enums.ChatAction.TYPING)
-    # await message.reply_text("Hi world")
     user_id = message.from_user.id
     user_first_name = message.from_user.first_name
     user_last_name = message.from_user.last_name
