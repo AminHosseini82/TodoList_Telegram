@@ -7,8 +7,6 @@ from plugins.login_check import login
 async def start_handler(client: Client, message: Message):
     # if he didn't start the bot, bot shows login successful message.
     await login(client, message)
-
-    # if he starts the bot,bot shows welcome message
     await message.reply_chat_action(enums.ChatAction.TYPING)
     await message.reply_text("خوش اومدی!")
 
