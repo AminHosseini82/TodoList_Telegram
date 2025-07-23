@@ -1,4 +1,4 @@
-from pyrogram import filters, client, Client
+from pyrogram import filters, client, Client, enums
 from pyrogram.types import Message
 from database.models import User, session
 from plugins.login_check import login
@@ -13,5 +13,6 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
     todos = user.todos
 
     if not todos:
+        await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("شما todo ای ثبت نداری")
 
