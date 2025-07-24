@@ -21,6 +21,8 @@ async def create_todo(client: Client, message: Message, messaeg=None):
     user_object = session.query(User).filter_by(user_id=user_id).first()
     # Add TodoWork and save it in database.
     new_todo = Todo(title=title.text, description=descriptions.text, users=user_object)
+
+    # Add to database
     session.add(new_todo)
     session.commit()
 
