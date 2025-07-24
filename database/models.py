@@ -43,10 +43,10 @@ class Todo(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(300))
     description = Column(String)
-    # the ForeignKey to user
-    user_id = Column(String, ForeignKey('users.id'))  # کلید خارجی به جدول users
     # relationship with users
     users = relationship("User", back_populates="todos")
+    # the ForeignKey to user
+    user_id = Column(String, ForeignKey('users.id'))  # کلید خارجی به جدول users
 
     def __repr__(self):
         return f"title: {self.title}"
