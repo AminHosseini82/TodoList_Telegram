@@ -20,8 +20,10 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
     # If todos finds
     else:
         text = "لیست کارهای شما:\n\n"
-        for todo in todos:
-            text += f"- {todo}\n"
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text(text)
+
+        for todo in todos:
+            await message.reply_chat_action(enums.ChatAction.TYPING)
+            await message.reply_text(todo)
 
