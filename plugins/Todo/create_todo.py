@@ -16,16 +16,13 @@ async def create_todo(client: Client, message: Message, messaeg=None):
     title = await client.ask(user_id, "لطفا عنوان کاری رو وارد بکن.")
     await message.reply_chat_action(enums.ChatAction.TYPING)
     descriptions = await client.ask(user_id, "لطفا توضیحاتی برای کار خودتون وارد بکنید.")
+    user_object = session.query(User).filter_by(user_id=user_id).first()
 
     # Add TodoWork and save it in database.
-    new_todo = Todo(title=title.text, description=descriptions.text, user_id=user_id)
+    new_todo = Todo(title=title.text, description=descriptions.text, users=user_object)
     session.add(new_todo)
     session.commit()
 
     # Show successful message.
     await message.reply_chat_action(enums.ChatAction.TYPING)
     await message.reply_text("Todo شما ثبت شد")
-
-
-
-
