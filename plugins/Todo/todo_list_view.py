@@ -30,11 +30,11 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
                     [  # First row
                         InlineKeyboardButton(  # Generates a callback query when pressed
                             "ویرایش",
-                            callback_data="Edit"
+                            callback_data="Edit_todo"
                         ),
                         InlineKeyboardButton(  # Opens a web URL
                             "حذف",
-                            callback_data="Delete"
+                            callback_data="Delete_todo"
                         ),
                     ],
                 ]
