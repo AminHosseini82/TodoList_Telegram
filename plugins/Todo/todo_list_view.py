@@ -5,7 +5,7 @@ from plugins.login_check import login
 
 @Client.on_message(filters.regex("نمایش لیست کار ها"))
 async def todo_list(client: Client, message: Message):  # Show all user todolist
-    # check login
+    # Check login
     await login(client, message)
     user_id = message.from_user.id
 
