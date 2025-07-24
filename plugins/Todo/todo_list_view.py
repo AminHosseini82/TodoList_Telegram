@@ -1,5 +1,5 @@
 from pyrogram import filters, client, Client, enums
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from database.models import User, session
 from plugins.login_check import login
 
@@ -25,5 +25,18 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
 
         for todo in todos:
             await message.reply_chat_action(enums.ChatAction.TYPING)
-            await message.reply_text(todo)
+            await message.reply_text(todo, reply_markup=InlineKeyboardMarkup(
+                [
+                    [  # First row
+                        InlineKeyboardButton(  # Generates a callback query when pressed
+                            "ویرایش",
+                            callback_data="Edit"
+                        ),
+                        InlineKeyboardButton(  # Opens a web URL
+                            "حذف",
+                            callback_data="Delete"
+                        ),
+                    ],
+                ]
+            ))
 
