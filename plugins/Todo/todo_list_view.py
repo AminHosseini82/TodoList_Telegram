@@ -12,7 +12,10 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
     user = session.query(User).filter_by(user_id=user_id).first()
     todos = user.todos
 
-    if not todos:
+    if todos is None:
         await message.reply_chat_action(enums.ChatAction.TYPING)
         await message.reply_text("شما todo ای ثبت نداری")
+
+    else:
+        await message.reply_text("یک TODO وجود دارد.")
 
