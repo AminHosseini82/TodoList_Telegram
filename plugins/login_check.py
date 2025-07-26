@@ -1,6 +1,7 @@
 from pyrogram import Client, enums
 from pyrogram.types import Message
 from database.models import session, User
+from pyromod import listen
 
 
 async def login(client: Client, message: Message):
@@ -13,10 +14,10 @@ async def login(client: Client, message: Message):
     # checking user is new or old one.
     if not existing_user:  # user is new
         new_user = User(user_id=user_id, firstname=user_first_name, lastname=user_last_name)
-        # set a simple password for now
-        # Todo: get user password from him.
-        new_user.set_password("123456")
-        # save in database
+        # Get User password
+        password = (await client.ask(user_id, "لطفا یک رمز برای حساب خود در نظر بگیرن:")).text
+
+        new_user.set_password(password)
         session.add(new_user)
         session.commit()
         # Show successful login message.
