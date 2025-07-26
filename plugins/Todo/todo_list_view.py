@@ -37,7 +37,7 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
                         ),
                         InlineKeyboardButton(  # Opens a web URL
                             "حذف",
-                            callback_data="Delete_todo"
+                            callback_data=f"delete_{todo.id}"
                         ),
                     ],
                 ]
@@ -75,3 +75,13 @@ async def edit_todo(client: Client, callback_query):
 
         else:
             await callback_query.message.reply_text("اصلا شما همجین Todo ای ندارین.")
+
+    elif data.startswith("delete_"):
+        todo_id = int(data.split("_")[1])
+        todo = session.query(Todo).filter_by(id=todo_id).first()
+        if todo:
+            session.delete(todo)
+            session.commit()
+            await callback_query.answer("✅ Todo حذف شد!")
+        else:
+            await callback_query.answer("⛔ Todo مورد نظر وجود ندارد!")
