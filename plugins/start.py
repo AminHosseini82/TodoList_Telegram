@@ -20,7 +20,6 @@ async def start_handler(client: Client, message: Message):
     ))
 
 
-
 @Client.on_message(filters.text)
 async def text_handler(client: Client, message: Message):
     # if he didn't start the bot, bot shows login successful message.
