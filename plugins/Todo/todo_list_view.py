@@ -32,7 +32,8 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
                     [  # First row
                         InlineKeyboardButton(  # Generates a callback query when pressed
                             "ویرایش",
-                            callback_data="Edit_todo"
+                            # callback_data="Edit_todo"
+                            callback_data=f"edit_{todo.id}"
                         ),
                         InlineKeyboardButton(  # Opens a web URL
                             "حذف",
@@ -45,13 +46,16 @@ async def todo_list(client: Client, message: Message):  # Show all user todolist
 
 @Client.on_callback_query()
 async def edit_todo(client: Client, callback_query):
+    data = callback_query.data
     # When someone press Edit_todo
-    if callback_query.data == "Edit_todo":
+    if data.startswith("edit_"):
+        todo_id = int(data.split("_")[1])  # استخراج شناسه از callback data
         # Get new data
         user_id = callback_query.from_user.id
 
+
         user_object = session.query(User).filter_by(user_id=user_id).first()
-        old_todo = session.query(Todo).filter_by(users=user_object).first()
+        old_todo = session.query(Todo).filter_by(id=todo_id).first()
 
         if old_todo:
             # Ask for new title and new description
