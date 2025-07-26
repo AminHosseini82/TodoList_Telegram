@@ -16,6 +16,5 @@ async def start_handler(client: Client, message: Message):
         [
             ["نمایش لیست کار ها"],
             ["اضافه کردن کار جدید"],
-            ["ویرایش کار"],
         ]
     ))
