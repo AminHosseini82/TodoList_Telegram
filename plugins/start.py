@@ -21,7 +21,7 @@ async def start_handler(client: Client, message: Message):
 
 
 @Client.on_message(
-    ~filters.command(["start"]) | ~filters.regex("نمایش لیست کار ها") | ~filters.regex("اضافه کردن کار جدید"))
+    ~filters.command(["start"]) & ~filters.regex("نمایش لیست کار ها") & ~filters.regex("اضافه کردن کار جدید"))
 async def text_handler(client: Client, message: Message):
     # if he didn't start the bot, bot shows login successful message.
     await login(client, message)

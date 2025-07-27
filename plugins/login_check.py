@@ -14,10 +14,9 @@ async def login(client: Client, message: Message):
     # checking user is new or old one.
     if not existing_user:  # user is new
         new_user = User(user_id=user_id, firstname=user_first_name, lastname=user_last_name)
-        # Get User password
-        password = (await client.ask(user_id, "لطفا یک رمز برای حساب خود در نظر بگیرن:")).text
-
-        new_user.set_password(password)
+        # # Get User password
+        # password = (await client.ask(user_id, "لطفا یک رمز برای حساب خود در نظر بگیرن:")).text
+        # new_user.set_password(password)
         session.add(new_user)
         session.commit()
         # Show successful login message.
