@@ -25,7 +25,7 @@ To run this project, follow these steps:
 1.  First, clone the project:
 
     ```bash
-    git clone [<URL_REPOSITORY>](https://github.com/AminHosseini82/TodoList_Telegram.git)
+    git clone https://github.com/AminHosseini82/TodoList_Telegram.git
     ```
 
 2.  Install the dependencies:
